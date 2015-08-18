@@ -17,8 +17,29 @@
     <AppxPackagedFile Include="C:\Users\admin\Documents\TestProject\CbrCourse\CbrCourse\bin\Debug\CbrCourse.exe">
       <PackagePath>CbrCourse.exe</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\admin\Documents\TestProject\CbrCourse\ApiModule\bin\Debug\ApiModule.dll">
+      <PackagePath>ApiModule.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\admin\Documents\TestProject\CbrCourse\packages\Autofac.3.0.2\lib\portable-win+net40+sl50+wp8\Autofac.dll">
+      <PackagePath>Autofac.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\admin\Documents\TestProject\CbrCourse\packages\Caliburn.Micro.1.4\lib\win8\Caliburn.Micro.dll">
+      <PackagePath>Caliburn.Micro.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\admin\Documents\TestProject\CbrCourse\packages\Caliburn.Micro.1.4\lib\win8\Caliburn.Micro.Extensions.dll">
+      <PackagePath>Caliburn.Micro.Extensions.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\admin\Documents\TestProject\CbrCourse\packages\Caliburn.Micro.WinRT.Autofac.0.2.0\lib\netcore45\Caliburn.Micro.WinRT.Autofac.dll">
+      <PackagePath>Caliburn.Micro.WinRT.Autofac.dll</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\admin\Documents\TestProject\CbrCourse\CbrModule\bin\Debug\CbrModule.dll">
       <PackagePath>CbrModule.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\admin\Documents\TestProject\CbrCourse\packages\ModernChart.1.0.0\lib\netcore45\De.TorstenMandelkow.MetroChart.dll">
+      <PackagePath>De.TorstenMandelkow.MetroChart.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\admin\Documents\TestProject\CbrCourse\packages\Windows.UI.Interactivity.1.0.2.0\lib\winrt45\Windows.UI.Interactivity.dll">
+      <PackagePath>Windows.UI.Interactivity.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\admin\Documents\TestProject\CbrCourse\CbrCourse\DataModel\SampleData.json">
       <PackagePath>DataModel\SampleData.json</PackagePath>
@@ -54,11 +75,11 @@
     <AppxPackagedFile Include="C:\Users\admin\Documents\TestProject\CbrCourse\CbrCourse\bin\Debug\HubPage.xbf">
       <PackagePath>HubPage.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\admin\Documents\TestProject\CbrCourse\CbrCourse\bin\Debug\SectionPage.xbf">
-      <PackagePath>SectionPage.xbf</PackagePath>
-    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\admin\Documents\TestProject\CbrCourse\CbrCourse\bin\Debug\ItemPage.xbf">
       <PackagePath>ItemPage.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\admin\Documents\TestProject\CbrCourse\packages\ModernChart.1.0.0\lib\netcore45\De.TorstenMandelkow.MetroChart\Themes\Generic.xaml">
+      <PackagePath>De.TorstenMandelkow.MetroChart\Themes\Generic.xaml</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\admin\Documents\TestProject\CbrCourse\CbrCourse\bin\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>

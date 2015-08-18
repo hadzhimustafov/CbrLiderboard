@@ -5,20 +5,33 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:CbrCourse"
-    xmlns:data="using:CbrCourse.Data"
-    xmlns:common="using:CbrCourse.Common"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:metroChart="using:De.TorstenMandelkow.MetroChart"
     mc:Ignorable="d">
-
+    <Page.Resources>
+        <metroChart:ResourceDictionaryCollection x:Key="CustomColors">
+            <ResourceDictionary>
+                <SolidColorBrush x:Key="Brush1" Color="Gray" />
+            </ResourceDictionary>
+            <ResourceDictionary>
+                <SolidColorBrush x:Key="Brush2" Color="DarkGray" />
+            </ResourceDictionary>
+            <ResourceDictionary>
+                <SolidColorBrush x:Key="Brush3" Color="DimGray" />
+            </ResourceDictionary>
+            <ResourceDictionary>
+                <SolidColorBrush x:Key="Brush4" Color="LightGray" />
+            </ResourceDictionary>
+        </metroChart:ResourceDictionaryCollection>
+    </Page.Resources>
     <!--
         Эта сетка выступает в роли корневой области страницы и определяет две строки:
         * Строка 0 содержит кнопку "Назад" и заголовок страницы
         * Строка 1 содержит оставшуюся часть страницы
     -->
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
-        DataContext="{Binding Item}"
-        d:DataContext="{Binding Groups[0].Items[0], Source={d:DesignData Source=/DataModel/SampleData.json, Type=data:SampleDataSource}}">
+        DataContext="{Binding SelectedItem}">
         <Grid.ChildrenTransitions>
             <TransitionCollection>
                 <EntranceThemeTransition/>
@@ -47,8 +60,22 @@
                         AutomationProperties.Name="Back"
                         AutomationProperties.AutomationId="BackButton"
                         AutomationProperties.ItemType="Navigation Button"/>
-            <TextBlock x:Name="pageTitle" Text="{Binding Title}" Style="{StaticResource HeaderTextBlockStyle}" Grid.Column="1" 
+            <TextBlock x:Name="pageTitle" Text="{Binding Name}" Style="{StaticResource HeaderTextBlockStyle}" Grid.Column="1" 
                         IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Bottom" Margin="0,0,30,40"/>
+
         </Grid>
+        <metroChart:ClusteredColumnChart
+            Grid.Row="1" ChartTitle="" ChartSubTitle=""
+             Palette="{StaticResource CustomColors}"
+            ChartLegendVisibility="Collapsed"
+         DataContext="{Binding ChartViewModel}">
+            <metroChart:ClusteredColumnChart.Series>
+                <metroChart:ChartSeries
+                    SeriesTitle="{Binding Caption}"
+                    DisplayMember="Date"
+                    ValueMember="Value"
+                ItemsSource="{Binding Path=Collection}" />
+            </metroChart:ClusteredColumnChart.Series>
+        </metroChart:ClusteredColumnChart>
     </Grid>
 </Page>

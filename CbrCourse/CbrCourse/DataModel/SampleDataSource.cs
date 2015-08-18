@@ -15,66 +15,12 @@ using Windows.UI.Xaml.Media.Imaging;
 // заменить ее другой моделью, соответствующей их потребностям. Использование этой модели позволяет повысить качество приложения 
 // скорость реагирования, инициируя задачу загрузки данных в коде программной части для App.xaml, если приложение 
 // запускается впервые.
+using ApiModule;
+using CbrCourse.DataModel;
 using CbrModule;
 
 namespace CbrCourse.Data
 {
-    /// <summary>
-    /// Универсальная модель данных элементов.
-    /// </summary>
-    public class SampleDataItem
-    {
-        public SampleDataItem(String uniqueId, String title, String subtitle, String imagePath, String description, String content)
-        {
-            this.UniqueId = uniqueId;
-            this.Title = title;
-            this.Subtitle = subtitle;
-            this.Description = description;
-            this.ImagePath = imagePath;
-            this.Content = content;
-        }
-
-        public string UniqueId { get; private set; }
-        public string Title { get; private set; }
-        public string Subtitle { get; private set; }
-        public string Description { get; private set; }
-        public string ImagePath { get; private set; }
-        public string Content { get; private set; }
-
-        public override string ToString()
-        {
-            return this.Title;
-        }
-    }
-
-    /// <summary>
-    /// Универсальная модель данных групп.
-    /// </summary>
-    public class SampleDataGroup
-    {
-        public SampleDataGroup(String uniqueId, String title, String subtitle, String imagePath, String description)
-        {
-            this.UniqueId = uniqueId;
-            this.Title = title;
-            this.Subtitle = subtitle;
-            this.Description = description;
-            this.ImagePath = imagePath;
-            this.Items = new ObservableCollection<SampleDataItem>();
-        }
-
-        public string UniqueId { get; private set; }
-        public string Title { get; private set; }
-        public string Subtitle { get; private set; }
-        public string Description { get; private set; }
-        public string ImagePath { get; private set; }
-        public ObservableCollection<SampleDataItem> Items { get; private set; }
-
-        public override string ToString()
-        {
-            return this.Title;
-        }
-    }
-
     /// <summary>
     /// Создает коллекцию групп и элементов с содержимым, считываемым из статического JSON-файла.
     /// 
@@ -83,87 +29,89 @@ namespace CbrCourse.Data
     /// </summary>
     public sealed class SampleDataSource
     {
-        private static SampleDataSource _sampleDataSource = new SampleDataSource();
-
-        private ObservableCollection<SampleDataGroup> _groups = new ObservableCollection<SampleDataGroup>();
-        public ObservableCollection<SampleDataGroup> Groups
+       
+        private SampleDataGroup _group;
+        public SampleDataGroup Group
         {
-            get { return this._groups; }
+            get { return this._group; }
         }
 
-        public static async Task<IEnumerable<SampleDataGroup>> GetGroupsAsync()
+        public async Task<SampleDataGroup> GetGroupAsync()
         {
-            await _sampleDataSource.GetSampleDataAsync();
+            await this.GetSampleDataAsync();
 
-            return _sampleDataSource.Groups;
+            return this.Group;
         }
 
-        public static async Task<SampleDataGroup> GetGroupAsync(string uniqueId)
+        public async Task<Valute> GetItemAsync(string uniqueId)
         {
-            await _sampleDataSource.GetSampleDataAsync();
+            await this.GetSampleDataAsync();
             // Для небольших наборов данных можно использовать простой линейный поиск
-            var matches = _sampleDataSource.Groups.Where((group) => group.UniqueId.Equals(uniqueId));
-            if (matches.Count() == 1) return matches.First();
-            return null;
-        }
-
-        public static async Task<SampleDataItem> GetItemAsync(string uniqueId)
-        {
-            await _sampleDataSource.GetSampleDataAsync();
-            // Для небольших наборов данных можно использовать простой линейный поиск
-            var matches = _sampleDataSource.Groups.SelectMany(group => group.Items).Where((item) => item.UniqueId.Equals(uniqueId));
-            if (matches.Count() == 1) return matches.First();
-            return null;
+            var matches = this.Group.Items.Where((item) => item.ID.Equals(uniqueId));
+            return matches.FirstOrDefault();
         }
 
         private async Task GetSampleDataAsync()
         {
-            if (this._groups.Count != 0)
-                return;
-            CbrRequsetClass cbrRequset = new CbrRequsetClass();
-            var r = await cbrRequset.GetDailyResponce().ConfigureAwait(false);
+            CbrRequestClass cbrRequest = new CbrRequestClass();
+            var r = await cbrRequest.GetDailyResponce().ConfigureAwait(false);
             if (r == null) return;
-            SampleDataGroup group = new SampleDataGroup(Guid.NewGuid().ToString(),"Котировки",r.Date,String.Empty,r.Name);
+            SampleDataGroup group = new SampleDataGroup(string.Format("Котировки: \"{0}\"",r.Name),r.Date.ToString());
             foreach (var valute in r.Items)
             {
-                group.Items.Add(new SampleDataItem(valute.ID, 
-                                                    valute.Name, 
-                                                    valute.CharCode, 
-                                                    string.Empty, 
-                                                    valute.Nominal,
-                                                    valute.Value));
+                group.Items.Add(valute);
             }
-            this.Groups.Add(group);
-           
+            this._group = group;
+        }
 
-            //Uri dataUri = new Uri("ms-appx:///DataModel/SampleData.json");
+        public Task UpdateDataAsync()
+        {
+           return this.GetSampleDataAsync();
+        }
+    }
 
-            //StorageFile file = await StorageFile.GetFileFromApplicationUriAsync(dataUri);
-            //string jsonText = await FileIO.ReadTextAsync(file);
-            //JsonObject jsonObject = JsonObject.Parse(jsonText);
-            //JsonArray jsonArray = jsonObject["Groups"].GetArray();
+    public sealed class QoutesDataSource
+    {
+        private readonly Valute _valute;
+        private readonly IRepositoryCache<QouteCurs> _qouteRepository;
 
-            //foreach (JsonValue groupValue in jsonArray)
-            //{
-            //    JsonObject groupObject = groupValue.GetObject();
-            //    SampleDataGroup group = new SampleDataGroup(groupObject["UniqueId"].GetString(),
-            //                                                groupObject["Title"].GetString(),
-            //                                                groupObject["Subtitle"].GetString(),
-            //                                                groupObject["ImagePath"].GetString(),
-            //                                                groupObject["Description"].GetString());
+        public QoutesDataSource(Valute valute, IRepositoryCache<QouteCurs> qouteRepository)
+        {
+            _valute = valute;
+            _qouteRepository = qouteRepository;
+        }
 
-            //    foreach (JsonValue itemValue in groupObject["Items"].GetArray())
-            //    {
-            //        JsonObject itemObject = itemValue.GetObject();
-            //        group.Items.Add(new SampleDataItem(itemObject["UniqueId"].GetString(),
-            //                                           itemObject["Title"].GetString(),
-            //                                           itemObject["Subtitle"].GetString(),
-            //                                           itemObject["ImagePath"].GetString(),
-            //                                           itemObject["Description"].GetString(),
-            //                                           itemObject["Content"].GetString()));
-            //    }
-            //    this.Groups.Add(group);
-            //}
+        private QouteCurs qouteCurs;
+        public QouteCurs QouteCurs
+        {
+            get { return this.qouteCurs; }
+        }
+
+        public async Task<QouteCurs> GetGroupAsync()
+        {
+            await this.GetQouteCursAsync();
+
+            return this.QouteCurs;
+        }
+
+        public async Task<Record> GetItemAsync(string uniqueId)
+        {
+            await this.GetQouteCursAsync();
+            var matches = this.QouteCurs.Items.Where((item) => item.Id.Equals(uniqueId));
+            return matches.FirstOrDefault();
+        }
+
+        private async Task GetQouteCursAsync()
+        {
+            CbrValuteQoutes cbrRequset = new CbrValuteQoutes();
+            var r = await cbrRequset.GetValuteQoutesResponce(_valute).ConfigureAwait(false);
+            if (r == null) return;
+            this.qouteCurs = r;
+        }
+
+        public Task UpdateDataAsync()
+        {
+            return this.GetQouteCursAsync();
         }
     }
 }

@@ -1,6 +1,13 @@
 <XamlCompilerSaveState>
   <ReferenceAssemblyList>
-    <LocalAssembly PathName="c:\users\admin\documents\visual studio 2013\projects\cbrcourse\cbrcourse\obj\debug\intermediatexaml\cbrcourse.exe" HashGuid="f942c5fb-ed26-0cb6-27a5-42d33567c5ce" />
-    <ReferenceAssembly PathName="c:\users\admin\documents\testproject\cbrcourse\cbrmodule\bin\debug\cbrmodule.dll" HashGuid="37fc06b0-41cb-e31b-6fb4-73ed5f5998c9" />
+    <LocalAssembly PathName="c:\users\admin\documents\testproject\cbrcourse\cbrcourse\obj\debug\intermediatexaml\cbrcourse.exe" HashGuid="7b4bb2d1-1301-3a6d-08b2-f73cf64df094" />
+    <ReferenceAssembly PathName="c:\users\admin\documents\testproject\cbrcourse\apimodule\bin\debug\apimodule.dll" HashGuid="d1566093-9c59-da4f-264c-cdb4a145ffea" />
+    <ReferenceAssembly PathName="c:\users\admin\documents\testproject\cbrcourse\packages\autofac.3.0.2\lib\portable-win+net40+sl50+wp8\autofac.dll" HashGuid="672e2c98-3343-53d9-be27-edc958edbddd" />
+    <ReferenceAssembly PathName="c:\users\admin\documents\testproject\cbrcourse\packages\caliburn.micro.1.4\lib\win8\caliburn.micro.dll" HashGuid="a37948e6-d2f7-0296-ce40-3ab8fc5c2e09" />
+    <ReferenceAssembly PathName="c:\users\admin\documents\testproject\cbrcourse\packages\caliburn.micro.1.4\lib\win8\caliburn.micro.extensions.dll" HashGuid="855a8e56-2398-36e2-4857-47045e273ef2" />
+    <ReferenceAssembly PathName="c:\users\admin\documents\testproject\cbrcourse\packages\caliburn.micro.winrt.autofac.0.2.0\lib\netcore45\caliburn.micro.winrt.autofac.dll" HashGuid="ac76caf0-a36c-0209-d59c-fbe375b482c9" />
+    <ReferenceAssembly PathName="c:\users\admin\documents\testproject\cbrcourse\cbrmodule\bin\debug\cbrmodule.dll" HashGuid="0e5b18ec-7c79-b898-d5e7-262f9b7b7fd2" />
+    <ReferenceAssembly PathName="c:\users\admin\documents\testproject\cbrcourse\packages\modernchart.1.0.0\lib\netcore45\de.torstenmandelkow.metrochart.dll" HashGuid="12c4f454-2cc0-3aea-06e5-1c97d1e29244" />
+    <ReferenceAssembly PathName="c:\users\admin\documents\testproject\cbrcourse\packages\windows.ui.interactivity.1.0.2.0\lib\winrt45\windows.ui.interactivity.dll" HashGuid="23738ec5-73fa-675f-8bc0-5c33139ff3a7" />
   </ReferenceAssemblyList>
 </XamlCompilerSaveState>

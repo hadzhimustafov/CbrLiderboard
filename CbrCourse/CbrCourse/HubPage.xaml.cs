@@ -1,4 +1,5 @@
-﻿using CbrCourse.Common;
+﻿using ApiModule;
+using CbrCourse.Common;
 using CbrCourse.Data;
 using System;
 using System.Collections.Generic;
@@ -25,7 +26,7 @@ namespace CbrCourse
     public sealed partial class HubPage : Page
     {
         private NavigationHelper navigationHelper;
-        private ObservableDictionary defaultViewModel = new ObservableDictionary();
+        private MainViewModel defaultViewModel;
 
         /// <summary>
         /// NavigationHelper используется на каждой странице для облегчения навигации и 
@@ -39,16 +40,17 @@ namespace CbrCourse
         /// <summary>
         /// Эту настройку можно изменить на модель строго типизированных представлений.
         /// </summary>
-        public ObservableDictionary DefaultViewModel
+        public MainViewModel DefaultViewModel
         {
             get { return this.defaultViewModel; }
         }
 
-        public HubPage()
+        public HubPage(MainViewModel mainViewModel)
         {
             this.InitializeComponent();
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += navigationHelper_LoadState;
+            this.defaultViewModel = mainViewModel;
         }
 
         /// <summary>
@@ -65,22 +67,10 @@ namespace CbrCourse
         private async void navigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
             // TODO: Создание соответствующей модели данных для области проблемы, чтобы заменить пример данных
-            var sampleDataGroups = await SampleDataSource.GetGroupsAsync().ConfigureAwait(false);
-            this.DefaultViewModel["Section3Items"] = sampleDataGroups.First();
+            //var sampleDataGroups = await SampleDataSource.GetGroupAsync().ConfigureAwait(false);
+            this.DefaultViewModel.UpdateGroupAsync();
         }
-
-        /// <summary>
-        /// Вызывается при нажатии заголовка HubSection.
-        /// </summary>
-        /// <param name="sender">Концентратор, который содержит элемент HubSection, заголовок которого щелкнул пользователь.</param>
-        /// <param name="e">Данные о событии, описывающие, каким образом было инициировано нажатие.</param>
-        void Hub_SectionHeaderClick(object sender, HubSectionHeaderClickEventArgs e)
-        {
-            HubSection section = e.Section;
-            var group = section.DataContext;
-            this.Frame.Navigate(typeof(SectionPage), ((SampleDataGroup)group).UniqueId);
-        }
-
+        
         /// <summary>
         /// Вызывается при нажатии элемента внутри раздела.
         /// </summary>
@@ -91,7 +81,7 @@ namespace CbrCourse
         {
             // Переход к соответствующей странице назначения и настройка новой страницы
             // путем передачи необходимой информации в виде параметра навигации
-            var itemId = ((SampleDataItem)e.ClickedItem).UniqueId;
+            var itemId = ((Valute)e.ClickedItem).ID;
             this.Frame.Navigate(typeof(ItemPage), itemId);
         }
         #region Регистрация NavigationHelper

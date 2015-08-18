@@ -1,4 +1,7 @@
-﻿using CbrCourse.Common;
+﻿using System.Reflection;
+using System.Xml.Linq;
+using Autofac;
+using CbrCourse.Common;
 
 using System;
 using System.Collections.Generic;
@@ -16,6 +19,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using ApiModule = ApiModule.ApiModule;
+using CbrModule = CbrModule.CbrModule;
 
 // Документацию по шаблону приложения-концентратора см. по адресу http://go.microsoft.com/fwlink/?LinkId=321221
 
@@ -49,7 +54,13 @@ namespace CbrCourse
                 this.DebugSettings.EnableFrameRateCounter = true;
             }
 #endif
+            var builder = new ContainerBuilder();
+            builder.RegisterModule(new global::CbrModule.CbrModule());
+            builder.RegisterModule(new global::ApiModule.ApiModule());
+            builder.RegisterModule(new CoreModule());
+           var cont = builder.Build();
 
+            var r = cont.Resolve<HubPage>();
             Frame rootFrame = Window.Current.Content as Frame;
 
             // Не повторяйте инициализацию приложения, если в окне уже имеется содержимое,

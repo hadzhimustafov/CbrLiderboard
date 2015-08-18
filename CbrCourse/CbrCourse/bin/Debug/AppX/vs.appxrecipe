@@ -17,17 +17,45 @@
     <AppXManifest Include="C:\Users\admin\Documents\TestProject\CbrCourse\CbrCourse\bin\Debug\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2015-08-17T15:42:45.110</Modified>
+      <Modified>2015-08-18T17:37:21.470</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\admin\Documents\TestProject\CbrCourse\CbrCourse\bin\Debug\CbrCourse.exe">
       <PackagePath>CbrCourse.exe</PackagePath>
-      <Modified>2015-08-18T10:11:05.462</Modified>
+      <Modified>2015-08-18T18:07:22.493</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\admin\Documents\TestProject\CbrCourse\ApiModule\bin\Debug\ApiModule.dll">
+      <PackagePath>ApiModule.dll</PackagePath>
+      <Modified>2015-08-18T18:02:59.664</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\admin\Documents\TestProject\CbrCourse\packages\Autofac.3.0.2\lib\portable-win+net40+sl50+wp8\Autofac.dll">
+      <PackagePath>Autofac.dll</PackagePath>
+      <Modified>2015-08-18T16:51:45.748</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\admin\Documents\TestProject\CbrCourse\packages\Caliburn.Micro.1.4\lib\win8\Caliburn.Micro.dll">
+      <PackagePath>Caliburn.Micro.dll</PackagePath>
+      <Modified>2015-08-18T16:51:51.262</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\admin\Documents\TestProject\CbrCourse\packages\Caliburn.Micro.1.4\lib\win8\Caliburn.Micro.Extensions.dll">
+      <PackagePath>Caliburn.Micro.Extensions.dll</PackagePath>
+      <Modified>2015-08-18T16:51:51.275</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\admin\Documents\TestProject\CbrCourse\packages\Caliburn.Micro.WinRT.Autofac.0.2.0\lib\netcore45\Caliburn.Micro.WinRT.Autofac.dll">
+      <PackagePath>Caliburn.Micro.WinRT.Autofac.dll</PackagePath>
+      <Modified>2015-08-18T16:51:51.682</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\admin\Documents\TestProject\CbrCourse\CbrModule\bin\Debug\CbrModule.dll">
       <PackagePath>CbrModule.dll</PackagePath>
-      <Modified>2015-08-18T10:08:31.490</Modified>
+      <Modified>2015-08-18T18:03:00.221</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\admin\Documents\TestProject\CbrCourse\packages\ModernChart.1.0.0\lib\netcore45\De.TorstenMandelkow.MetroChart.dll">
+      <PackagePath>De.TorstenMandelkow.MetroChart.dll</PackagePath>
+      <Modified>2015-08-18T13:23:00.834</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\admin\Documents\TestProject\CbrCourse\packages\Windows.UI.Interactivity.1.0.2.0\lib\winrt45\Windows.UI.Interactivity.dll">
+      <PackagePath>Windows.UI.Interactivity.dll</PackagePath>
+      <Modified>2015-08-18T16:51:45.842</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\admin\Documents\TestProject\CbrCourse\CbrCourse\DataModel\SampleData.json">
       <PackagePath>DataModel\SampleData.json</PackagePath>
@@ -67,23 +95,23 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\admin\Documents\TestProject\CbrCourse\CbrCourse\bin\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2015-08-16T13:26:33.123</Modified>
+      <Modified>2015-08-18T17:37:20.519</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\admin\Documents\TestProject\CbrCourse\CbrCourse\bin\Debug\HubPage.xbf">
       <PackagePath>HubPage.xbf</PackagePath>
-      <Modified>2015-08-17T15:42:43.455</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\admin\Documents\TestProject\CbrCourse\CbrCourse\bin\Debug\SectionPage.xbf">
-      <PackagePath>SectionPage.xbf</PackagePath>
-      <Modified>2015-08-16T13:26:33.123</Modified>
+      <Modified>2015-08-18T17:37:20.520</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\admin\Documents\TestProject\CbrCourse\CbrCourse\bin\Debug\ItemPage.xbf">
       <PackagePath>ItemPage.xbf</PackagePath>
-      <Modified>2015-08-16T13:26:33.154</Modified>
+      <Modified>2015-08-18T17:37:20.521</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\admin\Documents\TestProject\CbrCourse\packages\ModernChart.1.0.0\lib\netcore45\De.TorstenMandelkow.MetroChart\Themes\Generic.xaml">
+      <PackagePath>De.TorstenMandelkow.MetroChart\Themes\Generic.xaml</PackagePath>
+      <Modified>2015-08-18T13:23:00.847</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\admin\Documents\TestProject\CbrCourse\CbrCourse\bin\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2015-08-18T10:08:33.692</Modified>
+      <Modified>2015-08-18T18:03:33.899</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

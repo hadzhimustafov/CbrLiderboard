@@ -27,7 +27,7 @@ namespace CbrCourse
     public sealed partial class ItemPage : Page
     {
         private NavigationHelper navigationHelper;
-        private ObservableDictionary defaultViewModel = new ObservableDictionary();
+        private MainViewModel defaultViewModel ;
 
         /// <summary>
         /// NavigationHelper используется на каждой странице для облегчения навигации и 
@@ -41,14 +41,15 @@ namespace CbrCourse
         /// <summary>
         /// Эту настройку можно изменить на модель строго типизированных представлений.
         /// </summary>
-        public ObservableDictionary DefaultViewModel
+        public MainViewModel DefaultViewModel
         {
             get { return this.defaultViewModel; }
         }
 
-        public ItemPage()
+        public ItemPage(MainViewModel mainViewModel)
         {
             this.InitializeComponent();
+            this.defaultViewModel = mainViewModel;
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += navigationHelper_LoadState;
         }
@@ -67,8 +68,8 @@ namespace CbrCourse
         private async void navigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
             // TODO: Создание соответствующей модели данных для области проблемы, чтобы заменить пример данных
-            var item = await SampleDataSource.GetItemAsync((String)e.NavigationParameter);
-            this.DefaultViewModel["Item"] = item;
+
+            this.DefaultViewModel.UpdateSelectedItem(((String) e.NavigationParameter));
         }
 
         #region Регистрация NavigationHelper
