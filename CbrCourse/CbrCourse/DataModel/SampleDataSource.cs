@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Media.Imaging;
 // заменить ее другой моделью, соответствующей их потребностям. Использование этой модели позволяет повысить качество приложения 
 // скорость реагирования, инициируя задачу загрузки данных в коде программной части для App.xaml, если приложение 
 // запускается впервые.
+using CbrModule;
 
 namespace CbrCourse.Data
 {
@@ -119,35 +120,50 @@ namespace CbrCourse.Data
         {
             if (this._groups.Count != 0)
                 return;
-
-            Uri dataUri = new Uri("ms-appx:///DataModel/SampleData.json");
-
-            StorageFile file = await StorageFile.GetFileFromApplicationUriAsync(dataUri);
-            string jsonText = await FileIO.ReadTextAsync(file);
-            JsonObject jsonObject = JsonObject.Parse(jsonText);
-            JsonArray jsonArray = jsonObject["Groups"].GetArray();
-
-            foreach (JsonValue groupValue in jsonArray)
+            CbrRequsetClass cbrRequset = new CbrRequsetClass();
+            var r = await cbrRequset.GetDailyResponce().ConfigureAwait(false);
+            if (r == null) return;
+            SampleDataGroup group = new SampleDataGroup(Guid.NewGuid().ToString(),"Котировки",r.Date,String.Empty,r.Name);
+            foreach (var valute in r.Items)
             {
-                JsonObject groupObject = groupValue.GetObject();
-                SampleDataGroup group = new SampleDataGroup(groupObject["UniqueId"].GetString(),
-                                                            groupObject["Title"].GetString(),
-                                                            groupObject["Subtitle"].GetString(),
-                                                            groupObject["ImagePath"].GetString(),
-                                                            groupObject["Description"].GetString());
-
-                foreach (JsonValue itemValue in groupObject["Items"].GetArray())
-                {
-                    JsonObject itemObject = itemValue.GetObject();
-                    group.Items.Add(new SampleDataItem(itemObject["UniqueId"].GetString(),
-                                                       itemObject["Title"].GetString(),
-                                                       itemObject["Subtitle"].GetString(),
-                                                       itemObject["ImagePath"].GetString(),
-                                                       itemObject["Description"].GetString(),
-                                                       itemObject["Content"].GetString()));
-                }
-                this.Groups.Add(group);
+                group.Items.Add(new SampleDataItem(valute.ID, 
+                                                    valute.Name, 
+                                                    valute.CharCode, 
+                                                    string.Empty, 
+                                                    valute.Nominal,
+                                                    valute.Value));
             }
+            this.Groups.Add(group);
+           
+
+            //Uri dataUri = new Uri("ms-appx:///DataModel/SampleData.json");
+
+            //StorageFile file = await StorageFile.GetFileFromApplicationUriAsync(dataUri);
+            //string jsonText = await FileIO.ReadTextAsync(file);
+            //JsonObject jsonObject = JsonObject.Parse(jsonText);
+            //JsonArray jsonArray = jsonObject["Groups"].GetArray();
+
+            //foreach (JsonValue groupValue in jsonArray)
+            //{
+            //    JsonObject groupObject = groupValue.GetObject();
+            //    SampleDataGroup group = new SampleDataGroup(groupObject["UniqueId"].GetString(),
+            //                                                groupObject["Title"].GetString(),
+            //                                                groupObject["Subtitle"].GetString(),
+            //                                                groupObject["ImagePath"].GetString(),
+            //                                                groupObject["Description"].GetString());
+
+            //    foreach (JsonValue itemValue in groupObject["Items"].GetArray())
+            //    {
+            //        JsonObject itemObject = itemValue.GetObject();
+            //        group.Items.Add(new SampleDataItem(itemObject["UniqueId"].GetString(),
+            //                                           itemObject["Title"].GetString(),
+            //                                           itemObject["Subtitle"].GetString(),
+            //                                           itemObject["ImagePath"].GetString(),
+            //                                           itemObject["Description"].GetString(),
+            //                                           itemObject["Content"].GetString()));
+            //    }
+            //    this.Groups.Add(group);
+            //}
         }
     }
 }

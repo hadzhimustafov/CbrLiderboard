@@ -65,8 +65,8 @@ namespace CbrCourse
         private async void navigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
             // TODO: Создание соответствующей модели данных для области проблемы, чтобы заменить пример данных
-            var sampleDataGroup = await SampleDataSource.GetGroupAsync("Group-4");
-            this.DefaultViewModel["Section3Items"] = sampleDataGroup;
+            var sampleDataGroups = await SampleDataSource.GetGroupsAsync().ConfigureAwait(false);
+            this.DefaultViewModel["Section3Items"] = sampleDataGroups.First();
         }
 
         /// <summary>

@@ -1,5 +1,6 @@
 <XamlCompilerSaveState>
   <ReferenceAssemblyList>
     <LocalAssembly PathName="c:\users\admin\documents\visual studio 2013\projects\cbrcourse\cbrcourse\obj\debug\intermediatexaml\cbrcourse.exe" HashGuid="f942c5fb-ed26-0cb6-27a5-42d33567c5ce" />
+    <ReferenceAssembly PathName="c:\users\admin\documents\testproject\cbrcourse\cbrmodule\bin\debug\cbrmodule.dll" HashGuid="37fc06b0-41cb-e31b-6fb4-73ed5f5998c9" />
   </ReferenceAssemblyList>
 </XamlCompilerSaveState>

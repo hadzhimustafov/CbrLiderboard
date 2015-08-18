@@ -1,0 +1,16 @@
+C:\Users\admin\Documents\TestProject\CbrCourse\CbrModule\bin\Debug\CbrModule.dll
+C:\Users\admin\Documents\TestProject\CbrCourse\CbrModule\bin\Debug\CbrModule.pdb
+C:\Users\admin\Documents\TestProject\CbrCourse\CbrModule\bin\Debug\CbrModule.pri
+C:\Users\admin\Documents\TestProject\CbrCourse\CbrModule\obj\Debug\CbrModule.dll
+C:\Users\admin\Documents\TestProject\CbrCourse\CbrModule\obj\Debug\CbrModule.pdb
+C:\Users\admin\Documents\TestProject\CbrCourse\CbrModule\obj\Debug\priconfig.xml
+C:\Users\admin\Documents\TestProject\CbrCourse\CbrModule\obj\Debug\priconfig.xml.intermediate
+C:\Users\admin\Documents\TestProject\CbrCourse\CbrModule\obj\Debug\layout.resfiles
+C:\Users\admin\Documents\TestProject\CbrCourse\CbrModule\obj\Debug\layout.resfiles.intermediate
+C:\Users\admin\Documents\TestProject\CbrCourse\CbrModule\obj\Debug\resources.resfiles
+C:\Users\admin\Documents\TestProject\CbrCourse\CbrModule\obj\Debug\resources.resfiles.intermediate
+C:\Users\admin\Documents\TestProject\CbrCourse\CbrModule\obj\Debug\pri.resfiles
+C:\Users\admin\Documents\TestProject\CbrCourse\CbrModule\obj\Debug\pri.resfiles.intermediate
+C:\Users\admin\Documents\TestProject\CbrCourse\CbrModule\obj\Debug\qualifiers.txt
+C:\Users\admin\Documents\TestProject\CbrCourse\CbrModule\obj\Debug\qualifiers.txt.intermediate
+C:\Users\admin\Documents\TestProject\CbrCourse\CbrModule\obj\Debug\MultipleQualifiersPerDimensionFound.txt
