@@ -1,4 +1,7 @@
-﻿using CbrCourse.Common;
+﻿using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using CbrCourse.Annotations;
+using CbrCourse.Common;
 using CbrCourse.Data;
 using System;
 using System.Collections.Generic;
@@ -24,7 +27,7 @@ namespace CbrCourse
     /// <summary>
     /// Страница, на которой отображаются сведения об отдельном элементе внутри группы.
     /// </summary>
-    public sealed partial class ItemPage : Page
+    public sealed partial class ItemPage : Page, INotifyPropertyChanged
     {
         private NavigationHelper navigationHelper;
         private MainViewModel defaultViewModel ;
@@ -46,10 +49,9 @@ namespace CbrCourse
             get { return this.defaultViewModel; }
         }
 
-        public ItemPage(MainViewModel mainViewModel)
+        public ItemPage()
         {
             this.InitializeComponent();
-            this.defaultViewModel = mainViewModel;
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += navigationHelper_LoadState;
         }
@@ -68,8 +70,8 @@ namespace CbrCourse
         private async void navigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
             // TODO: Создание соответствующей модели данных для области проблемы, чтобы заменить пример данных
-
-            this.DefaultViewModel.UpdateSelectedItem(((String) e.NavigationParameter));
+            this.defaultViewModel = (MainViewModel)e.NavigationParameter;
+            this.OnPropertyChanged("DefaultViewModel");
         }
 
         #region Регистрация NavigationHelper
@@ -95,5 +97,15 @@ namespace CbrCourse
         }
 
         #endregion
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        [NotifyPropertyChangedInvocator]
+        private void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
+
+        }
     }
 }

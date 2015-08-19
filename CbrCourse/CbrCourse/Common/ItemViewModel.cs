@@ -12,6 +12,7 @@ namespace CbrCourse.Common
 {
     public class ItemViewModel : BaseViewModel
     {
+        private readonly IRepositoryCache<QouteCurs> _dataSource;
         private readonly Valute _selectedItem;
         private string _name;
         private string _charCode;
@@ -19,18 +20,24 @@ namespace CbrCourse.Common
         private string _nominal;
         private string _numCode;
         private string _value;
-        private QoutesDataSource qoutesDataSource;
         private ChartViewModel chartViewModel;
 
-        public ItemViewModel(Valute selectedItem, Func<Valute, QoutesDataSource> qoutesFactory)
+        public ItemViewModel(Valute selectedItem, IRepositoryCache<QouteCurs> dataSource)
         {
+            _selectedItem = selectedItem;
+            _dataSource = dataSource;
             _name = selectedItem.Name;
             _charCode = selectedItem.CharCode;
             _id = selectedItem.ID;
             _nominal = selectedItem.Nominal;
             _numCode = selectedItem.NumCode;
             _value = selectedItem.Value;
-            qoutesDataSource = qoutesFactory(selectedItem);
+            this._dataSource.CashUpdated += _dataSource_CashUpdated;
+            this.UpdateQoutesAsync();
+        }
+
+        void _dataSource_CashUpdated(object sender, EventArgs e)
+        {
             this.UpdateQoutesAsync();
         }
 
@@ -66,7 +73,8 @@ namespace CbrCourse.Common
 
         public async void UpdateQoutesAsync()
         {
-            QouteCurs qouteCurs = await this.qoutesDataSource.GetGroupAsync();
+            QouteCurs qouteCurs = await this._dataSource.GetResponse(this._selectedItem);
+            if (qouteCurs==null) return;//не было данных, как затянем, обновимся
             this.chartViewModel = new ChartViewModel(new ObservableCollection<Record>(qouteCurs.Items), this.Name);
             this.OnPropertyChanged("ChartViewModel");
         }

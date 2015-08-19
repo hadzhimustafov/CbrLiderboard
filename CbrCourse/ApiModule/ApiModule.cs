@@ -8,6 +8,7 @@ namespace ApiModule
     {
         protected override void Load(ContainerBuilder builder)
         {
+            builder.RegisterType<Valute>().AsSelf();
             builder.RegisterType<DailyCurs>().AsSelf();
             base.Load(builder);
         }

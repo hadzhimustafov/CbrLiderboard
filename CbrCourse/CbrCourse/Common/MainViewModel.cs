@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 using Windows.UI.Xaml.Controls.Primitives;
 using ApiModule;
 using CbrCourse.Data;
-using CbrCourse.DataModel;
 
 namespace CbrCourse.Common
 {
@@ -15,14 +14,24 @@ namespace CbrCourse.Common
     {
         private readonly Func<Valute, ItemViewModel> _itemFactory;
         private ObservableCollection<Valute> _items;
-        private SampleDataSource dataSource;
-        private SampleDataGroup dataGroup;
+        private readonly IRepositoryCache<DailyCurs> dataSource;
+        private DailyCurs dataGroup;
         private ItemViewModel selectedItem;
 
-        public MainViewModel(Func<Valute, ItemViewModel> itemFactory)
+        public MainViewModel(Func<Valute, ItemViewModel> itemFactory, IRepositoryCache<DailyCurs> dataSource)
         {
             _itemFactory = itemFactory;
-            this.dataSource = new SampleDataSource();
+            this.dataSource = dataSource;
+            this.dataSource.CashUpdated += CashUpdated;
+        }
+
+        void CashUpdated(object sender, EventArgs e)
+        {
+            this.UpdateGroupAsync();
+            if (selectedItem!=null)
+            {
+                this.UpdateSelectedItem(selectedItem.Id);
+            }
         }
 
         public ObservableCollection<Valute> Items
@@ -32,7 +41,7 @@ namespace CbrCourse.Common
 
         public string Title
         {
-            get { return this.dataGroup.Title; }
+            get { return this.dataGroup.Name; }
         }
 
         public string Date
@@ -45,14 +54,13 @@ namespace CbrCourse.Common
         }
         public async void UpdateGroupAsync()
         {
-            await this.dataSource.UpdateDataAsync();
-            this.dataGroup = dataSource.Group;
+            this.dataGroup = await dataSource.GetResponse();
             this.OnPropertyChanged("Items");
         }
 
         public async void UpdateSelectedItem(string s)
         {
-            var selectedItem = await dataSource.GetItemAsync(s);
+            var selectedItem = this.dataGroup.Items.FirstOrDefault(x => x.ID==s);
             this.selectedItem = _itemFactory(selectedItem);
             this.OnPropertyChanged("SelectedItem");
         }

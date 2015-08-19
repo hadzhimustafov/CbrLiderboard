@@ -16,7 +16,6 @@ using Windows.UI.Xaml.Media.Imaging;
 // скорость реагирования, инициируя задачу загрузки данных в коде программной части для App.xaml, если приложение 
 // запускается впервые.
 using ApiModule;
-using CbrCourse.DataModel;
 using CbrModule;
 
 namespace CbrCourse.Data
@@ -27,91 +26,86 @@ namespace CbrCourse.Data
     /// SampleDataSource инициализируется данными, считываемыми из статического JSON-файла, включенного в 
     /// проект.  Предоставляет пример данных как во время разработки, так и во время выполнения.
     /// </summary>
-    public sealed class SampleDataSource
-    {
+    //public sealed class SampleDataSource
+    //{
        
-        private SampleDataGroup _group;
-        public SampleDataGroup Group
-        {
-            get { return this._group; }
-        }
+    //    private DailyCurs _group;
+    //    public DailyCurs Group
+    //    {
+    //        get { return this._group; }
+    //    }
 
-        public async Task<SampleDataGroup> GetGroupAsync()
-        {
-            await this.GetSampleDataAsync();
+    //    public async Task<DailyCurs> GetGroupAsync()
+    //    {
+    //        await this.GetSampleDataAsync();
 
-            return this.Group;
-        }
+    //        return this.Group;
+    //    }
 
-        public async Task<Valute> GetItemAsync(string uniqueId)
-        {
-            await this.GetSampleDataAsync();
-            // Для небольших наборов данных можно использовать простой линейный поиск
-            var matches = this.Group.Items.Where((item) => item.ID.Equals(uniqueId));
-            return matches.FirstOrDefault();
-        }
+    //    public async Task<Valute> GetItemAsync(string uniqueId)
+    //    {
+    //        await this.GetSampleDataAsync();
+    //        // Для небольших наборов данных можно использовать простой линейный поиск
+    //        var matches = this.Group.Items.Where((item) => item.ID.Equals(uniqueId));
+    //        return matches.FirstOrDefault();
+    //    }
 
-        private async Task GetSampleDataAsync()
-        {
-            CbrRequestClass cbrRequest = new CbrRequestClass();
-            var r = await cbrRequest.GetDailyResponce().ConfigureAwait(false);
-            if (r == null) return;
-            SampleDataGroup group = new SampleDataGroup(string.Format("Котировки: \"{0}\"",r.Name),r.Date.ToString());
-            foreach (var valute in r.Items)
-            {
-                group.Items.Add(valute);
-            }
-            this._group = group;
-        }
+    //    private async Task GetSampleDataAsync()
+    //    {
+    //        CbrRequestClass cbrRequest = new CbrRequestClass();
+    //        var dailyResponse = await cbrRequest.GetDailyResponce().ConfigureAwait(false);
+    //        if (dailyResponse == null) return;
+    //        this._group = dailyResponse;
+    //    }
 
-        public Task UpdateDataAsync()
-        {
-           return this.GetSampleDataAsync();
-        }
-    }
+    //    public Task UpdateDataAsync()
+    //    {
+    //       return this.GetSampleDataAsync();
+    //    }
+    //}
 
-    public sealed class QoutesDataSource
-    {
-        private readonly Valute _valute;
-        private readonly IRepositoryCache<QouteCurs> _qouteRepository;
+    //public sealed class QoutesDataSource
+    //{
+    //    private readonly Valute _valute;
+    //    private readonly IRepositoryCache<QouteCurs> _qouteRepository;
 
-        public QoutesDataSource(Valute valute, IRepositoryCache<QouteCurs> qouteRepository)
-        {
-            _valute = valute;
-            _qouteRepository = qouteRepository;
-        }
+    //    public QoutesDataSource(Valute valute, IRepositoryCache<QouteCurs> qouteRepository)
+    //    {
+    //        _valute = valute;
+    //        _qouteRepository = qouteRepository;
+    //    }
 
-        private QouteCurs qouteCurs;
-        public QouteCurs QouteCurs
-        {
-            get { return this.qouteCurs; }
-        }
+    //    private QouteCurs qouteCurs;
+    //    public QouteCurs QouteCurs
+    //    {
+    //        get { return this.qouteCurs; }
+    //    }
 
-        public async Task<QouteCurs> GetGroupAsync()
-        {
-            await this.GetQouteCursAsync();
+    //    public async Task<QouteCurs> GetGroupAsync()
+    //    {
+    //        await this.GetQouteCursAsync();
 
-            return this.QouteCurs;
-        }
+    //        return this.QouteCurs;
+    //    }
 
-        public async Task<Record> GetItemAsync(string uniqueId)
-        {
-            await this.GetQouteCursAsync();
-            var matches = this.QouteCurs.Items.Where((item) => item.Id.Equals(uniqueId));
-            return matches.FirstOrDefault();
-        }
+    //    public async Task<Record> GetItemAsync(string uniqueId)
+    //    {
+    //        await this.GetQouteCursAsync();
+    //        var matches = this.QouteCurs.Items.Where((item) => item.Id.Equals(uniqueId));
+    //        return matches.FirstOrDefault();
+    //    }
 
-        private async Task GetQouteCursAsync()
-        {
-            CbrValuteQoutes cbrRequset = new CbrValuteQoutes();
-            var r = await cbrRequset.GetValuteQoutesResponce(_valute).ConfigureAwait(false);
-            if (r == null) return;
-            this.qouteCurs = r;
-        }
+    //    private async Task GetQouteCursAsync()
+    //    {
+    //        CbrValuteQoutes cbrRequset = new CbrValuteQoutes();
+    //        var r = await cbrRequset.GetValuteQoutesResponce(_valute).ConfigureAwait(false);
+    //        if (r == null) return;
+    //        this.qouteCurs = r;
+    //    }
 
-        public Task UpdateDataAsync()
-        {
-            return this.GetQouteCursAsync();
-        }
-    }
+    //    public Task UpdateDataAsync()
+    //    {
+    //        return this.GetQouteCursAsync();
+    //    }
+    //}
 }

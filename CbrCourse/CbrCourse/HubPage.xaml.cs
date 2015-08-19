@@ -1,4 +1,5 @@
 ﻿using ApiModule;
+using Autofac;
 using CbrCourse.Common;
 using CbrCourse.Data;
 using System;
@@ -45,12 +46,18 @@ namespace CbrCourse
             get { return this.defaultViewModel; }
         }
 
-        public HubPage(MainViewModel mainViewModel)
+        public HubPage()
         {
+            var builder = new ContainerBuilder();
+            builder.RegisterModule(new global::CbrModule.CbrModule());
+            builder.RegisterModule(new global::ApiModule.ApiModule());
+            builder.RegisterModule(new CoreModule());
+            var cont = builder.Build();
+
+            this.defaultViewModel = cont.Resolve<MainViewModel>();
             this.InitializeComponent();
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += navigationHelper_LoadState;
-            this.defaultViewModel = mainViewModel;
         }
 
         /// <summary>
@@ -82,7 +89,8 @@ namespace CbrCourse
             // Переход к соответствующей странице назначения и настройка новой страницы
             // путем передачи необходимой информации в виде параметра навигации
             var itemId = ((Valute)e.ClickedItem).ID;
-            this.Frame.Navigate(typeof(ItemPage), itemId);
+            this.defaultViewModel.UpdateSelectedItem(itemId);
+            this.Frame.Navigate(typeof(ItemPage), this.defaultViewModel);
         }
         #region Регистрация NavigationHelper
 

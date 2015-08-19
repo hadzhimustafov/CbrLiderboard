@@ -265,6 +265,7 @@ namespace CbrCourse.CbrCourse_XamlTypeInfo
             return -1;
         }
 
+        private object Activate_0_HubPage() { return new global::CbrCourse.HubPage(); }
         private object Activate_6_BaseViewModel() { return new global::CbrCourse.Common.BaseViewModel(); }
         private object Activate_8_ResourceDictionaryCollection() { return new global::De.TorstenMandelkow.MetroChart.ResourceDictionaryCollection(); }
         private object Activate_9_ObservableCollection() { return new global::System.Collections.ObjectModel.ObservableCollection<global::Windows.UI.Xaml.ResourceDictionary>(); }
@@ -282,6 +283,7 @@ namespace CbrCourse.CbrCourse_XamlTypeInfo
         private object Activate_34_Collection() { return new global::System.Collections.ObjectModel.Collection<global::De.TorstenMandelkow.MetroChart.DataPointGroup>(); }
         private object Activate_36_ObservableCollection() { return new global::System.Collections.ObjectModel.ObservableCollection<global::De.TorstenMandelkow.MetroChart.DataPoint>(); }
         private object Activate_37_Collection() { return new global::System.Collections.ObjectModel.Collection<global::De.TorstenMandelkow.MetroChart.DataPoint>(); }
+        private object Activate_39_ItemPage() { return new global::CbrCourse.ItemPage(); }
         private void VectorAdd_8_ResourceDictionaryCollection(object instance, object item)
         {
             var collection = (global::System.Collections.Generic.ICollection<global::Windows.UI.Xaml.ResourceDictionary>)instance;
@@ -373,6 +375,7 @@ namespace CbrCourse.CbrCourse_XamlTypeInfo
 
             case 0:   //  CbrCourse.HubPage
                 userType = new global::CbrCourse.CbrCourse_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
+                userType.Activator = Activate_0_HubPage;
                 userType.AddMemberName("NavigationHelper");
                 userType.AddMemberName("DefaultViewModel");
                 xamlType = userType;
@@ -648,6 +651,7 @@ namespace CbrCourse.CbrCourse_XamlTypeInfo
 
             case 39:   //  CbrCourse.ItemPage
                 userType = new global::CbrCourse.CbrCourse_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
+                userType.Activator = Activate_39_ItemPage;
                 userType.AddMemberName("NavigationHelper");
                 userType.AddMemberName("DefaultViewModel");
                 xamlType = userType;

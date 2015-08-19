@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using System.Xml.Linq;
+using Windows.UI.Xaml.Media.Animation;
 using Autofac;
 using CbrCourse.Common;
 
@@ -54,13 +55,6 @@ namespace CbrCourse
                 this.DebugSettings.EnableFrameRateCounter = true;
             }
 #endif
-            var builder = new ContainerBuilder();
-            builder.RegisterModule(new global::CbrModule.CbrModule());
-            builder.RegisterModule(new global::ApiModule.ApiModule());
-            builder.RegisterModule(new CoreModule());
-           var cont = builder.Build();
-
-            var r = cont.Resolve<HubPage>();
             Frame rootFrame = Window.Current.Content as Frame;
 
             // Не повторяйте инициализацию приложения, если в окне уже имеется содержимое,
@@ -99,12 +93,12 @@ namespace CbrCourse
                 // Если стек навигации не восстанавливается для перехода к первой странице,
                 // настройка новой страницы путем передачи необходимой информации в качестве параметра
                 // навигации
-                rootFrame.Navigate(typeof(HubPage), e.Arguments);
+                rootFrame.Navigate(typeof(HubPage),e.Arguments);
             }
             // Обеспечение активности текущего окна
             Window.Current.Activate();
         }
-
+        
         /// <summary>
         /// Вызывается в случае сбоя навигации на определенную страницу
         /// </summary>

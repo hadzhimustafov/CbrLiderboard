@@ -141,3 +141,11 @@ C:\Users\admin\Documents\TestProject\CbrCourse\CbrCourse\obj\Debug\Caliburn.Micr
 C:\Users\admin\Documents\TestProject\CbrCourse\CbrCourse\obj\Debug\Caliburn.Micro.Extensions.pri.xml
 C:\Users\admin\Documents\TestProject\CbrCourse\CbrCourse\obj\Debug\De.TorstenMandelkow.MetroChart.pri.xml
 C:\Users\admin\Documents\TestProject\CbrCourse\CbrCourse\obj\Debug\ProjectArchitectures.txt
+C:\Users\admin\Documents\TestProject\CbrCourse\CbrCourse\obj\Debug\Autofac\layout.resfiles
+C:\Users\admin\Documents\TestProject\CbrCourse\CbrCourse\obj\Debug\Autofac\layout.resfiles.intermediate
+C:\Users\admin\Documents\TestProject\CbrCourse\CbrCourse\obj\Debug\Autofac\Resources.resfiles
+C:\Users\admin\Documents\TestProject\CbrCourse\CbrCourse\obj\Debug\Autofac\Resources.resfiles.intermediate
+C:\Users\admin\Documents\TestProject\CbrCourse\CbrCourse\obj\Debug\Autofac\pri.resfiles
+C:\Users\admin\Documents\TestProject\CbrCourse\CbrCourse\obj\Debug\Autofac\pri.resfiles.intermediate
+C:\Users\admin\Documents\TestProject\CbrCourse\CbrCourse\obj\Debug\Autofac\priconfig.xml
+C:\Users\admin\Documents\TestProject\CbrCourse\CbrCourse\obj\Debug\Autofac\priconfig.xml.intermediate

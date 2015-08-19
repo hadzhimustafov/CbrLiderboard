@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Autofac;
 using CbrCourse.Common;
+using CbrCourse.Data;
 
 namespace CbrCourse
 {

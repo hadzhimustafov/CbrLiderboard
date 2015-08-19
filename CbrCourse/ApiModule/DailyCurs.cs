@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,6 @@ namespace ApiModule
         [XmlAttribute("name")]
         public string Name { get; set; }
         [XmlElement("Valute")]
-        public List<Valute> Items { get; set; }
+        public ObservableCollection<Valute> Items { get; set; }
     }
 }

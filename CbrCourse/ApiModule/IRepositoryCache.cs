@@ -8,7 +8,8 @@ namespace ApiModule
 {
     public interface IRepositoryCache<T>
     {
-        void UpdateCache();
+        Task UpdateCache(object valute = null, DateTime dateFrom = new DateTime());
         Task<T> GetResponse(object valute=null, DateTime dateFrom=default(DateTime));
+        event EventHandler CashUpdated;
     }
 }

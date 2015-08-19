@@ -120,7 +120,6 @@
     <Compile Include="Common\ItemViewModel.cs" />
     <Compile Include="Common\MainViewModel.cs" />
     <Compile Include="CoreModule.cs" />
-    <Compile Include="DataModel\SampleDataGroup.cs" />
     <Compile Include="HubPage.xaml.cs">
       <DependentUpon>HubPage.xaml</DependentUpon>
     </Compile>
@@ -145,7 +144,6 @@
     <PRIResource Include="Strings\ru-RU\Resources.resw">
       <SubType>Designer</SubType>
     </PRIResource>
-    <Content Include="DataModel\SampleData.json" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Logo.scale-100.png" />
