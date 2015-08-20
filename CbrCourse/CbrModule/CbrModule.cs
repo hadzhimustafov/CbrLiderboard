@@ -12,8 +12,9 @@ namespace CbrModule
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterType<CbrRequestClass>().As<IRepositoryCache<DailyCurs>>();
+            builder.RegisterType<CbrRequestClass>().As<IRepositoryCache<DailyCurs>>().SingleInstance();//Отдаем всем запросившим один экземпляр, чтобы всегда был актуальный кэш
             builder.RegisterType<CbrValuteQoutes>().As<IRepositoryCache<QouteCurs>>();
+            builder.RegisterType<DefaultCacheUpdater>().As<ICacheUpdater>().SingleInstance();//Сервис обновления кэша должен быть для всего приложения
             base.Load(builder);
         }
     }

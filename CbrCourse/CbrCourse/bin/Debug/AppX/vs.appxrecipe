@@ -17,17 +17,17 @@
     <AppXManifest Include="C:\Users\admin\Documents\TestProject\CbrCourse\CbrCourse\bin\Debug\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2015-08-19T17:35:09.109</Modified>
+      <Modified>2015-08-20T13:29:13.658</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\admin\Documents\TestProject\CbrCourse\CbrCourse\bin\Debug\CbrCourse.exe">
       <PackagePath>CbrCourse.exe</PackagePath>
-      <Modified>2015-08-19T17:54:48.733</Modified>
+      <Modified>2015-08-20T14:16:53.367</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\admin\Documents\TestProject\CbrCourse\ApiModule\bin\Debug\ApiModule.dll">
       <PackagePath>ApiModule.dll</PackagePath>
-      <Modified>2015-08-19T17:47:06.592</Modified>
+      <Modified>2015-08-20T13:42:41.688</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\admin\Documents\TestProject\CbrCourse\packages\Autofac.3.0.2\lib\portable-win+net40+sl50+wp8\Autofac.dll">
       <PackagePath>Autofac.dll</PackagePath>
@@ -47,7 +47,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\admin\Documents\TestProject\CbrCourse\CbrModule\bin\Debug\CbrModule.dll">
       <PackagePath>CbrModule.dll</PackagePath>
-      <Modified>2015-08-19T17:54:47.655</Modified>
+      <Modified>2015-08-20T14:08:09.611</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\admin\Documents\TestProject\CbrCourse\packages\ModernChart.1.0.0\lib\netcore45\De.TorstenMandelkow.MetroChart.dll">
       <PackagePath>De.TorstenMandelkow.MetroChart.dll</PackagePath>
@@ -91,15 +91,15 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\admin\Documents\TestProject\CbrCourse\CbrCourse\bin\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2015-08-18T17:37:20.519</Modified>
+      <Modified>2015-08-20T13:29:09.120</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\admin\Documents\TestProject\CbrCourse\CbrCourse\bin\Debug\HubPage.xbf">
       <PackagePath>HubPage.xbf</PackagePath>
-      <Modified>2015-08-18T17:37:20.520</Modified>
+      <Modified>2015-08-20T13:29:10.523</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\admin\Documents\TestProject\CbrCourse\CbrCourse\bin\Debug\ItemPage.xbf">
       <PackagePath>ItemPage.xbf</PackagePath>
-      <Modified>2015-08-18T17:37:20.521</Modified>
+      <Modified>2015-08-20T14:16:53.095</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\admin\Documents\TestProject\CbrCourse\packages\ModernChart.1.0.0\lib\netcore45\De.TorstenMandelkow.MetroChart\Themes\Generic.xaml">
       <PackagePath>De.TorstenMandelkow.MetroChart\Themes\Generic.xaml</PackagePath>
@@ -107,7 +107,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\admin\Documents\TestProject\CbrCourse\CbrCourse\bin\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2015-08-19T17:54:48.968</Modified>
+      <Modified>2015-08-20T14:16:53.678</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

@@ -102,6 +102,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="ApiModule.cs" />
+    <Compile Include="CacheUpdateInterval.cs" />
     <Compile Include="DailyCurs.cs" />
     <Compile Include="IRepositoryCache.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -111,6 +111,7 @@
     <Compile Include="CbrModule.cs" />
     <Compile Include="CbrRequestClass.cs" />
     <Compile Include="CbrValuteQoutes.cs" />
+    <Compile Include="DefaultCacheUpdater.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

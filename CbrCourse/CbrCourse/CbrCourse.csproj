@@ -119,6 +119,8 @@
     <Compile Include="Common\BaseViewModel.cs" />
     <Compile Include="Common\ItemViewModel.cs" />
     <Compile Include="Common\MainViewModel.cs" />
+    <Compile Include="Converters\EnumTypeToListConverter.cs" />
+    <Compile Include="Converters\NullToVisibilityConverter.cs" />
     <Compile Include="CoreModule.cs" />
     <Compile Include="HubPage.xaml.cs">
       <DependentUpon>HubPage.xaml</DependentUpon>
@@ -138,7 +140,6 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
-    <None Include="Common\ReadMe.txt" />
     <None Include="CbrCourse_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <PRIResource Include="Strings\ru-RU\Resources.resw">

@@ -10,10 +10,15 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:c="using:ApiModule"
+    xmlns:converters="using:CbrCourse.Converters"
     mc:Ignorable="d">
-    <!--
-    Эта сетка выступает в роли корневой области страницы.
-  -->
+    <Page.Resources>
+        <ResourceDictionary>
+            <converters:NullToVisibilityConverter x:Key="VisibiltyConverter"/>
+            <!--<converters:EnumTypeToListConverter x:Key="EnumToListConverter"/>-->
+        </ResourceDictionary>
+    </Page.Resources>
+    <!-- Эта сетка выступает в роли корневой области страницы.-->
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.ChildrenTransitions>
             <TransitionCollection>
@@ -24,6 +29,12 @@
             <Hub.Header>
                 <!-- Кнопка "Назад" и заголовок страницы -->
                 <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
                     <Button  x:Name="backButton" Style="{StaticResource NavigationBackButtonNormalStyle}"
                         Margin="-1,-1,39,0" 
                         VerticalAlignment="Top"
@@ -31,13 +42,29 @@
                         AutomationProperties.Name="Back"
                         AutomationProperties.AutomationId="BackButton"
                         AutomationProperties.ItemType="Navigation Button"/>
-                    <TextBlock x:Name="pageTitle" Text="{StaticResource AppName}" Style="{StaticResource HeaderTextBlockStyle}" Grid.Column="1" 
-                        VerticalAlignment="Top" IsHitTestVisible="false" TextWrapping="NoWrap" />
+                    <TextBlock x:Name="pageTitle" Text="{StaticResource AppName}" Style="{StaticResource HeaderTextBlockStyle}" Grid.Column="1" VerticalAlignment="Top" IsHitTestVisible="false" TextWrapping="NoWrap" />
+                    <StackPanel Grid.Column="2" Margin="30 0"  Orientation="Horizontal">
+                        <TextBlock Text="Интервал обновления: " Style="{StaticResource SubheaderTextBlockStyle}" IsHitTestVisible="false" TextWrapping="NoWrap" />
+                        <ComboBox ItemsSource="{Binding CacheUpdateInterval}" SelectedItem="{Binding SelectedInterval, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="20 0">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <TextBlock Text="{Binding }" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                    </StackPanel>
+                    <StackPanel Grid.Column="3" Margin="0 0"  Orientation="Horizontal">
+                        <TextBlock Text="{Binding LastUpdate}" Style="{StaticResource SubheaderTextBlockStyle}" IsHitTestVisible="false" TextWrapping="NoWrap" />
+                    </StackPanel>
                 </Grid>
             </Hub.Header>
             <HubSection x:Uid="Section3Header" Header="{Binding Title}" Padding="40,40,40,32">
                 <DataTemplate>
-                    <GridView
+                    <Grid>
+                        <ProgressRing Width="200" Height="200" Foreground="White" IsActive="True" Visibility="{Binding Items, Converter={StaticResource VisibiltyConverter}, ConverterParameter='Invert'}"/>
+                        <GridView
                         x:Name="itemGridView"
                         ItemsSource="{Binding Items}"
                         AutomationProperties.AutomationId="ItemGridView"
@@ -45,7 +72,8 @@
                         SelectionMode="None"
                         IsSwipeEnabled="false"
                         IsItemClickEnabled="True"
-                        ItemClick="ItemView_ItemClick">
+                        ItemClick="ItemView_ItemClick"
+                        Visibility="{Binding Items, Converter={StaticResource VisibiltyConverter}}">
                         <GridView.ItemTemplate>
                             <DataTemplate>
                                 <Border BorderBrush="DarkCyan" BorderThickness="2" Padding="10" Width="400" Height="200">
@@ -68,6 +96,7 @@
                             </DataTemplate>
                         </GridView.ItemTemplate>
                     </GridView>
+                    </Grid>
                 </DataTemplate>
             </HubSection>
         </Hub>

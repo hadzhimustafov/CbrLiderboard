@@ -77,12 +77,12 @@ C:\Users\admin\Documents\TestProject\CbrCourse\CbrCourse\obj\Debug\ItemPage.g.i.
 C:\Users\admin\Documents\TestProject\CbrCourse\CbrCourse\obj\Debug\ItemPage.g.cs
 C:\Users\admin\Documents\TestProject\CbrCourse\CbrCourse\obj\Debug\XamlTypeInfo.g.cs
 C:\Users\admin\Documents\TestProject\CbrCourse\CbrCourse\obj\Debug\App.xaml
+C:\Users\admin\Documents\TestProject\CbrCourse\CbrCourse\obj\Debug\App.xbf
+C:\Users\admin\Documents\TestProject\CbrCourse\CbrCourse\obj\Debug\XamlSaveStateFile.xml
 C:\Users\admin\Documents\TestProject\CbrCourse\CbrCourse\obj\Debug\HubPage.xaml
 C:\Users\admin\Documents\TestProject\CbrCourse\CbrCourse\obj\Debug\ItemPage.xaml
-C:\Users\admin\Documents\TestProject\CbrCourse\CbrCourse\obj\Debug\App.xbf
 C:\Users\admin\Documents\TestProject\CbrCourse\CbrCourse\obj\Debug\HubPage.xbf
 C:\Users\admin\Documents\TestProject\CbrCourse\CbrCourse\obj\Debug\ItemPage.xbf
-C:\Users\admin\Documents\TestProject\CbrCourse\CbrCourse\obj\Debug\XamlSaveStateFile.xml
 C:\Users\admin\Documents\TestProject\CbrCourse\CbrCourse\obj\Debug\CbrCourse.exe
 C:\Users\admin\Documents\TestProject\CbrCourse\CbrCourse\obj\Debug\CbrCourse.pdb
 C:\Users\admin\Documents\TestProject\CbrCourse\CbrCourse\obj\Debug\Autofac\en\Autofac.Core.Activators.Reflection.MostParametersConstructorSelectorResources.resw

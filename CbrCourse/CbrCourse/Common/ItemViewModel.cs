@@ -21,10 +21,12 @@ namespace CbrCourse.Common
         private string _numCode;
         private string _value;
         private ChartViewModel chartViewModel;
+        private DateTimeOffset _selectedDate;
 
         public ItemViewModel(Valute selectedItem, IRepositoryCache<QouteCurs> dataSource)
         {
             _selectedItem = selectedItem;
+            _selectedDate = DateTime.Now.AddMonths(-1);
             _dataSource = dataSource;
             _name = selectedItem.Name;
             _charCode = selectedItem.CharCode;
@@ -73,7 +75,7 @@ namespace CbrCourse.Common
 
         public async void UpdateQoutesAsync()
         {
-            QouteCurs qouteCurs = await this._dataSource.GetResponse(this._selectedItem);
+            QouteCurs qouteCurs = await this._dataSource.GetResponse(valute: this._selectedItem, dateFrom: _selectedDate.Date);
             if (qouteCurs==null) return;//не было данных, как затянем, обновимся
             this.chartViewModel = new ChartViewModel(new ObservableCollection<Record>(qouteCurs.Items), this.Name);
             this.OnPropertyChanged("ChartViewModel");
@@ -82,6 +84,16 @@ namespace CbrCourse.Common
         public ChartViewModel ChartViewModel
         {
             get { return this.chartViewModel; }
+        }
+
+        public DateTimeOffset SelectedDate
+        {
+            get { return _selectedDate; }
+            set
+            {
+                _selectedDate = value;
+                this.UpdateQoutesAsync();
+            }
         }
     }
     // Create a ViewModel
@@ -94,7 +106,6 @@ namespace CbrCourse.Common
         {
             _records = records;
             _caption = caption;
-            this.OnPropertyChanged("Collection");
         }
 
         public string Caption

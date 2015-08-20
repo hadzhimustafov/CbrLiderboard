@@ -1,5 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using Windows.ApplicationModel.Core;
+using Windows.UI.Core;
 using CbrCourse.Annotations;
 
 namespace CbrCourse.Common
@@ -11,8 +13,13 @@ namespace CbrCourse.Common
         [NotifyPropertyChangedInvocator]
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
-            PropertyChangedEventHandler handler = PropertyChanged;
-            if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
+            CoreDispatcher coreDispatcher = CoreApplication.MainView.CoreWindow.Dispatcher;
+            if (coreDispatcher == null) return;
+
+            coreDispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+            {
+                if (PropertyChanged != null) PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            });
         }
     }
 }

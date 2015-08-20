@@ -8,6 +8,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:metroChart="using:De.TorstenMandelkow.MetroChart"
+    xmlns:converters="using:CbrCourse.Converters"
     mc:Ignorable="d">
     <Page.Resources>
         <metroChart:ResourceDictionaryCollection x:Key="CustomColors">
@@ -24,6 +25,7 @@
                 <SolidColorBrush x:Key="Brush4" Color="LightGray" />
             </ResourceDictionary>
         </metroChart:ResourceDictionaryCollection>
+        <converters:NullToVisibilityConverter x:Key="VisibiltyConverter"/>
     </Page.Resources>
     <!--
         Эта сетка выступает в роли корневой области страницы и определяет две строки:
@@ -41,18 +43,15 @@
             <RowDefinition Height="140"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-
-        <!--
-            TODO: Содержимое должно размещается в следующей сетке
-                  для отображения сведений для текущего элемента
-        -->
+      
         <Grid Grid.Row="1" x:Name="contentRegion"/>
 
         <!-- Кнопка "Назад" и заголовок страницы -->
-        <Grid>
+        <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="120"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             <Button x:Name="backButton" Margin="39,59,39,0" Command="{Binding NavigationHelper.GoBackCommand, ElementName=pageRoot}"
                         Style="{StaticResource NavigationBackButtonNormalStyle}"
@@ -62,20 +61,27 @@
                         AutomationProperties.ItemType="Navigation Button"/>
             <TextBlock x:Name="pageTitle" Text="{Binding Name}" Style="{StaticResource HeaderTextBlockStyle}" Grid.Column="1" 
                         IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Bottom" Margin="0,0,30,40"/>
+            <StackPanel Grid.Column="2" VerticalAlignment="Center">
+                <TextBlock Text="Показать курс с: " Style="{StaticResource SubheaderTextBlockStyle}" IsHitTestVisible="false" TextWrapping="NoWrap" Margin="0 10"/>
+                <DatePicker Date="{Binding SelectedDate, Mode=TwoWay}"/>
+            </StackPanel>
 
         </Grid>
+        <ProgressRing Grid.Row="1" Width="200" Height="200" Foreground="White" IsActive="True" Visibility="{Binding ChartViewModel, Converter={StaticResource VisibiltyConverter}, ConverterParameter='Invert'}"/>
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Grid.Row="1">
         <metroChart:ClusteredColumnChart
-            Grid.Row="1" ChartTitle="" ChartSubTitle=""
+             ChartTitle="" ChartSubTitle=""
              Palette="{StaticResource CustomColors}"
             ChartLegendVisibility="Collapsed"
-         DataContext="{Binding ChartViewModel}">
+         Visibility="{Binding ChartViewModel, Converter={StaticResource VisibiltyConverter}}">
             <metroChart:ClusteredColumnChart.Series>
-                <metroChart:ChartSeries
-                    SeriesTitle="{Binding Caption}"
+                <metroChart:ChartSeries 
+                    SeriesTitle="{Binding ChartViewModel.Caption}"
                     DisplayMember="Date"
                     ValueMember="Value"
-                ItemsSource="{Binding Path=Collection}" />
+                ItemsSource="{Binding ChartViewModel.Collection}" />
             </metroChart:ClusteredColumnChart.Series>
         </metroChart:ClusteredColumnChart>
+        </ScrollViewer>
     </Grid>
 </Page>

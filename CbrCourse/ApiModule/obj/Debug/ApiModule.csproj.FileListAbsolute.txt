@@ -27,4 +27,3 @@ C:\Users\admin\Documents\TestProject\CbrCourse\ApiModule\obj\Debug\pri.resfiles.
 C:\Users\admin\Documents\TestProject\CbrCourse\ApiModule\obj\Debug\qualifiers.txt
 C:\Users\admin\Documents\TestProject\CbrCourse\ApiModule\obj\Debug\qualifiers.txt.intermediate
 C:\Users\admin\Documents\TestProject\CbrCourse\ApiModule\obj\Debug\MultipleQualifiersPerDimensionFound.txt
-C:\Users\admin\Documents\TestProject\CbrCourse\ApiModule\obj\Debug\ApiModule.csprojResolveAssemblyReference.cache
